@@ -3,7 +3,7 @@ using ImGuiNET.MonoGame;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace InsideTheBoxWiseOnesQuest
+namespace ITBWOQ
 {
     public class Client : Game
     {

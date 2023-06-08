@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace InsideTheBoxWiseOnesQuest
+namespace ITBWOQ
 {
     public class State
     {
         public static readonly Random random = new();
         public readonly string id = UniqueObject.New();
 
-        public enum CurrentState
+        public enum CurrentScreen
         {
             CharacterCustomization,
             Battle,
@@ -29,7 +29,7 @@ namespace InsideTheBoxWiseOnesQuest
             Opponent,
         }
 
-        public CurrentState currentState;
+        public CurrentScreen Screen { get; private set; }
         // probably should be in separate UI State class
         public CurrentControlsScreen currentControlsScreen;
 
@@ -47,7 +47,7 @@ namespace InsideTheBoxWiseOnesQuest
 
         public void Reset()
         {
-            currentState = CurrentState.CharacterCustomization;
+            Screen = CurrentScreen.CharacterCustomization;
             currentControlsScreen = CurrentControlsScreen.MainMenu;
 
             foreach (var fighter in Enum.GetValues<Fighter>())
@@ -59,21 +59,26 @@ namespace InsideTheBoxWiseOnesQuest
             }
         }
 
-        public void BeginBattle()
+        public void BeginBattle(bool randomizeStats = true)
         {
             foreach(var fighter in Enum.GetValues<Fighter>())
             {
                 if (fighter == Fighter.None)
                     continue;
 
-                Wizards[fighter] = Wizards[fighter].Randomise().ResetHealth();
+                var wizard = Wizards[fighter];
+
+                if (randomizeStats)
+                    wizard = wizard.Randomise();
+
+                Wizards[fighter] = wizard.ResetHealth();
             }
 
             fighters = new(Wizards.OrderByDescending(kvp => kvp.Value.dexterity).Select(kvp => kvp.Key));
 
             Winner = Fighter.None;
 
-            currentState = CurrentState.Battle;
+            Screen = CurrentScreen.Battle;
 
             ProcessTurn();
         }
@@ -108,7 +113,7 @@ namespace InsideTheBoxWiseOnesQuest
 
             if(fighters.Count <= 1)
             {
-                currentState = CurrentState.GameOver;
+                Screen = CurrentScreen.GameOver;
 
                 Winner = currentFighter;
             }

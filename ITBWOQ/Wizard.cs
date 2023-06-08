@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
-namespace InsideTheBoxWiseOnesQuest
+namespace ITBWOQ
 {
     public enum Element
     {

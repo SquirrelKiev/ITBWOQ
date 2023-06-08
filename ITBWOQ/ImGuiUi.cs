@@ -2,7 +2,7 @@
 using System;
 using System.Numerics;
 
-namespace InsideTheBoxWiseOnesQuest
+namespace ITBWOQ
 {
     // This should only be UI code to make the program unit testable
     public static class ImGuiUi
@@ -11,9 +11,9 @@ namespace InsideTheBoxWiseOnesQuest
 
         public static void RenderWindow(State state)
         {
-            switch (state.currentState)
+            switch (state.Screen)
             {
-                case State.CurrentState.CharacterCustomization:
+                case State.CurrentScreen.CharacterCustomization:
                     var playerWizard = state.Wizards[State.Fighter.Player];
 
                     bool shouldBeginBattle = RenderWizardCustomization(ref playerWizard);
@@ -25,7 +25,7 @@ namespace InsideTheBoxWiseOnesQuest
                     }
                     break;
 
-                case State.CurrentState.Battle:
+                case State.CurrentScreen.Battle:
                     // TODO: Allow more than two wizards - place info above wizard head omori style?
                     bool anchorRight = false;
 
@@ -38,7 +38,7 @@ namespace InsideTheBoxWiseOnesQuest
                     RenderWizardControls(state);
                     break;
 
-                case State.CurrentState.GameOver:
+                case State.CurrentScreen.GameOver:
                     RenderGameOverScreen(state);
                     break;
             }

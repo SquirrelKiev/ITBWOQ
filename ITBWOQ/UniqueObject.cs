@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InsideTheBoxWiseOnesQuest
+namespace ITBWOQ
 {
     public static class UniqueObject
     {
