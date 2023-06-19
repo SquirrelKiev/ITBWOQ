@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITBWOQ", "ITBWOQ\ITBWOQ.csproj", "{40DBF56B-974C-4A3D-B327-EFD74B772C9B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGuiNetMonogame", "..\WiseOnesQuest\ImGuiNetMonogame\ImGuiNetMonogame.csproj", "{D3CD2A95-020C-4EBA-8DAC-FE32111198CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGuiNetMonogame", "ImGuiNetMonogame\ImGuiNetMonogame.csproj", "{D3CD2A95-020C-4EBA-8DAC-FE32111198CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITBWOQ.Tests", "ITBWOQ.Tests\ITBWOQ.Tests.csproj", "{D707DAF0-FE12-4B74-A482-BE760F6A840C}"
 EndProject
